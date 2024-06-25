@@ -31,8 +31,7 @@
                      </a>
 
                      {{-- Button to Projects Table --}}
-                     <a type="button"
-                        class="btn btn-outline-primary d-flex align-items-center justify-content-center"
+                     <a type="button" class="btn btn-outline-primary d-flex align-items-center justify-content-center"
                         href="{{ route('admin.projects.index') }}">
 
                         <i class="fa-solid fa-angles-left"></i> Go to Projects Table
@@ -49,12 +48,35 @@
 
                      <div class="d-flex flex-column justify-content-between h-100 p-5 pb-3 text-white text-shadow-1">
 
-                        <h3 class="mb-4 display-6 lh-1 fw-bold">{{ $project->title }}</h3>
+                        <div class="row">
+
+                           <div class="col-12 col-md-6 mb-4">
+
+                              <h3 class="display-6 lh-1 fw-bold">{{ $project->title }}</h3>
+
+                           </div>
+
+                           <div class="col-12 col-md-6 justify-content-end">
+
+                              <div class="d-flex gap-3 justify-content-end">
+   
+                                 @foreach ($project->technologies as $tech)
+                                    <span class="badge" style="background-color:{{ $tech->color }}">
+                                       {{ $tech->name }}
+                                    </span>
+                                 @endforeach
+   
+                              </div>
+
+                           </div>
+
+                        </div>
 
                         <ul class="d-flex flex-column justify-content-end list-unstyled mb-0">
 
                            <li>
-                              <h4 class="fs-3 fw-bold">Project Type: <em class="fs-4 fw-lighter">{{ $project->type->name }}</em>
+                              <h4 class="fs-3 fw-bold">Project Type: <em
+                                    class="fs-4 fw-lighter">{{ $project->type?->name ? $project->type?->name : ' --- ' }}</em>
                               </h4>
                            </li>
 
