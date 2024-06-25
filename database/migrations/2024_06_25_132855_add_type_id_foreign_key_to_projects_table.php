@@ -11,7 +11,7 @@ return new class extends Migration
      * 
      * ALTER TABLE `projects`
      * ADD `type_id` BIGINT UNSIGNED NULLABLE
-     *  AFTER `title`;
+     *  AFTER `title`,
      * 
      * FOREIGN KEY `type_id` REFERENCES types(`id`);
      * 
