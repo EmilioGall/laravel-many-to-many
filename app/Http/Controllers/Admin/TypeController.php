@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateTypeRequest;
+use App\Http\Requests\UpdateTypeRequest;
 use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Http\Request;
@@ -39,15 +40,17 @@ class TypeController extends Controller
     public function store(CreateTypeRequest $request)
     {
 
+        $newTypeName = $request->validated();
+
         $newType = new Type();
 
-        $newType->name = $request->validated();
+        $newType->fill($newTypeName);
 
         $newType->slug = Str::slug($newType->name, '_');
 
         $newType->save();
 
-        dd($newType);
+        // dd($newType);
 
         return redirect()->route('admin.types.index');
     }
@@ -63,17 +66,28 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Type $type)
     {
-        //
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+
+        $modifiedTypeName = $request->validated();
+
+        // dd($modifiedTypeName);
+
+        $type->slug = Str::slug($modifiedTypeName['name'], '_');
+
+        $type->update($modifiedTypeName);
+
+        // dd($type);
+
+        return redirect()->route('admin.types.index');
     }
 
     /**
