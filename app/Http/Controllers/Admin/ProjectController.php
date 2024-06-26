@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -35,7 +36,11 @@ class ProjectController extends Controller
 
         // dd($typesCollection);
 
-        return view('admin.projects.create', compact('typesCollection'));
+        $technologiesCollection = Technology::all();
+
+        // dd($technologiesCollection);
+
+        return view('admin.projects.create', compact('typesCollection', 'technologiesCollection'));
     }
 
     /**
