@@ -56,10 +56,9 @@
                               <td scope="row">#{{ $type['id'] }}</td>
 
                               <th>
-                                 <a
-                                    href="{{ route('admin.types.show', ['type' => $type->slug]) }}">
-                                    {{ $type['slug'] }}
-                                 </a>
+
+                                 {{ $type['slug'] }}
+
                               </th>
 
                               <td>{{ $type['name'] }}</td>

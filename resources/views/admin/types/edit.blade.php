@@ -15,7 +15,9 @@
                   {{-- Types Table Name --}}
                   <div class="col-9 fw-bold fs-3 text-primary">
 
-                     {{ __('Add New Types') }}
+                     <h1 class="fw-1 fs-1 text-primary">Modify Type:</h1>
+
+                     <h2>"{{ $type['name'] }}"</h2>
 
                   </div>
 
@@ -37,8 +39,9 @@
                {{-- Form Section --}}
                <section class="card-body">
 
-                  <form class="border rounded p-3 my-4" action="{{ route('admin.types.store') }}" method="POST">
+                  <form class="border rounded p-3 my-4" action="{{ route('admin.types.update', ['type' => $type->slug]) }}" method="POST">
                      @csrf
+                     @method('PUT')
 
                      <div class="row g-3">
 
@@ -53,7 +56,7 @@
                               @enderror"
                               id="name"
                               name="name"
-                              value="{{ old('name') }}">
+                              value="{{ old('name', $type->name) }}">
 
                            @error('name')
                               <div class="alert alert-danger mt-1">
@@ -70,7 +73,7 @@
                      {{-- Submit Button --}}
                      <div class="col-4">
 
-                        <button class="w-100 btn btn-primary btn-lg mb-4" type="submit">Create</button>
+                        <button class="w-100 btn btn-primary btn-lg mb-4" type="submit">Update</button>
 
                      </div>
 
