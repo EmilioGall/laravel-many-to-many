@@ -82,6 +82,7 @@
 
                      <ul class="nav flex-column">
 
+                        {{-- Dashboard Home Page Link --}}
                         <li class="nav-item">
                            <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
                               href="{{ route('admin.dashboard') }}">
@@ -89,6 +90,7 @@
                            </a>
                         </li>
 
+                        {{-- Projects Index Page Link --}}
                         <li class="nav-item">
                            <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}"
                               href="{{ route('admin.projects.index') }}">
@@ -97,11 +99,21 @@
                            </a>
                         </li>
 
+                        {{-- New Project Page Link --}}
                         <li class="nav-item">
                            <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.create' ? 'bg-secondary' : '' }}"
                               href="{{ route('admin.projects.create') }}">
                               <i class="fa-solid fa-plus fa-lg fa-fw"></i>
                               Add New Project
+                           </a>
+                        </li>
+
+                        {{-- Types Index Page Link --}}
+                        <li class="nav-item">
+                           <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.types.index' ? 'bg-secondary' : '' }}"
+                              href="{{ route('admin.types.index') }}">
+                              <i class="fa-solid fa-table-list fa-lg fa-fw"></i>
+                              Types Table List
                            </a>
                         </li>
 
