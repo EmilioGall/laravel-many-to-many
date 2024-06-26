@@ -33,6 +33,17 @@
 
                </div>
 
+               {{-- Alert Band --}}
+               @if (session('message'))
+                  <div class="card-body">
+
+                     <div class="alert alert-success">
+                        {{ session('message') }}
+                     </div>
+
+                  </div>
+               @endif
+
                <div class="card-body">
 
                   <table class="table table-hover">
