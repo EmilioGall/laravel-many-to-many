@@ -89,6 +89,43 @@
 
                         </div>
 
+                        {{-- Technologies Checkboxes --}}
+                        <div class="col-12 mb-2 d-flex flex-column">
+
+                           <label for="technologies" class="form-label fw-bold">Project Technologies</label>
+
+                           <div class="btn-group" role="group" id="technologies">
+                              @foreach ($technologiesCollection as $tech)
+                                 @if (old('technologies') == null)
+                                    <input name="technologies[]"
+                                       type="checkbox"
+                                       class="btn-check"
+                                       value="{{ $tech->id }}"
+                                       id="tech#{{ $tech->id }}"
+                                       autocomplete="off"
+                                       @checked($project->technologies->contains($tech->id))>
+
+                                    <label for="tech#{{ $tech->id }}" class="btn btn-outline-primary">
+                                       {{ $tech->name }}
+                                    </label>
+                                 @else
+                                    <input name="technologies[]"
+                                       type="checkbox"
+                                       class="btn-check"
+                                       value="{{ $tech->id }}"
+                                       id="tech#{{ $tech->id }}"
+                                       autocomplete="off"
+                                       @checked(in_array($tech->id, old('technologies', [])))>
+
+                                    <label for="tech#{{ $tech->id }}" class="btn btn-outline-primary">
+                                       {{ $tech->name }}
+                                    </label>
+                                 @endif
+                              @endforeach
+                           </div>
+
+                        </div>
+
                         {{-- Description Input --}}
                         <div class="col-12">
 
