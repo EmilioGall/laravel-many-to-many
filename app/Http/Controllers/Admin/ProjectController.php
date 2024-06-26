@@ -56,9 +56,17 @@ class ProjectController extends Controller
         // dd($projectsDataArray);
 
         $newProject = new Project();
+
         $newProject->fill($projectsDataArray);
+
         $newProject->slug = Str::slug($newProject->title, '_');
+
         $newProject->save();
+
+        // Checkboxes control
+        if ($request->has('technologies')) {
+            $newProject->technologies()->attach($request->technologies);
+        };
 
         return redirect()->route('admin.projects.index');
     }
