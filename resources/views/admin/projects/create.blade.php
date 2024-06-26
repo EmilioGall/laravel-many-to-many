@@ -43,7 +43,7 @@
                      <div class="row g-3">
 
                         {{-- Title Input --}}
-                        <div class="col-12">
+                        <div class="col-12 mb-2">
 
                            <label for="title" class="form-label fw-bold">Project Title</label>
                            <input type="text"
@@ -64,7 +64,7 @@
                         </div>
 
                         {{-- Select Type --}}
-                        <div class="col-12">
+                        <div class="col-12 mb-2">
 
                            <select class="form-select"
                               aria-label="Select Type"
@@ -74,7 +74,7 @@
                               <option @selected(old('type_id') == null)>Choose a type...</option>
 
                               @foreach ($typesCollection as $type)
-                                 <option @selected(old('type_id') == $type->id) value="{{ $type->id }}" >
+                                 <option @selected(old('type_id') == $type->id) value="{{ $type->id }}">
                                     {{ $type->name }}
                                  </option>
                               @endforeach
@@ -83,10 +83,31 @@
 
                         </div>
 
-                        {{-- Description Input --}}
-                        <div class="col-12">
+                        {{-- Technologies Checkboxes --}}
+                        <div class="col-12 mb-2 d-flex flex-column">
 
-                           <label for="description" class="form-label">Description</label>
+                           <label for="technologies" class="form-label fw-bold">Project Technologies</label>
+
+                           <div class="btn-group" role="group" id="technologies">
+                              @foreach ($technologiesCollection as $tech)
+                                 <input name="technologies[]"
+                                    type="checkbox"
+                                    class="btn-check"
+                                    value="{{ $tech->id }}"
+                                    id="tech#{{ $tech->id }}"
+                                    autocomplete="off"
+                                    @checked(in_array($tech->id, old('technologies', [])))>
+
+                           <label for="tech#{{ $tech->id }}" class="btn btn-outline-primary">{{ $tech->name }}</label>
+                              @endforeach
+                           </div>
+
+                        </div>
+
+                        {{-- Description Input --}}
+                        <div class="col-12 mb-2">
+
+                           <label for="description" class="form-label fw-bold">Description</label>
                            <textarea
                               class="form-control
                               @error('description')
