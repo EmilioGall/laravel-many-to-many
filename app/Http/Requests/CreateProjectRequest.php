@@ -24,7 +24,8 @@ class CreateProjectRequest extends FormRequest
         return [
 
             'title' => ['required', 'min:3'],
-            'type_id' => ['nullable', 'exists:type,id'],
+            'type_id' => ['nullable', 'exists:types,id'],
+            'technologies' => ['nullable', 'exists:technologies,id'],
             'description' => ['min:20']
 
         ];
