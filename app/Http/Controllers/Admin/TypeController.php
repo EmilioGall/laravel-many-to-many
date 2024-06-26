@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class TypeController extends Controller
@@ -14,11 +15,11 @@ class TypeController extends Controller
     public function index()
     {
         
-        $projectsArray = Project::all();
+        $typesArray = Type::all();
 
-        // dd($projectsArray);
+        // dd($typesArray);
 
-        return view('admin.types.index', compact('projectsArray'));
+        return view('admin.types.index', compact('typesArray'));
     }
 
     /**
