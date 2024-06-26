@@ -94,7 +94,11 @@ class ProjectController extends Controller
 
         // dd($typesCollection);
 
-        return view('admin.projects.edit', compact('project', 'typesCollection'));
+        $technologiesCollection = Technology::all();
+
+        // dd($technologiesCollection);
+
+        return view('admin.projects.edit', compact('project', 'typesCollection', 'technologiesCollection'));
     }
 
     /**
