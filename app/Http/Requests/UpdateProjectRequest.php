@@ -25,6 +25,7 @@ class UpdateProjectRequest extends FormRequest
 
             'title' => ['required', 'min:3'],
             'type_id' => ['nullable', 'exists:type,id'],
+            'technologies' => ['nullable', 'exists:technologies,id'],
             'description' => ['min:20']
 
         ];
