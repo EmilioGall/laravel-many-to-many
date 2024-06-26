@@ -115,6 +115,11 @@ class ProjectController extends Controller
         $project['slug'] = Str::slug($project['title'], '_');
         $project->save();
 
+        // Checkboxes control
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($request->technologies);
+        };
+
         return redirect()->route('admin.projects.show', ['project' => $project->slug]);
     }
 
@@ -127,6 +132,5 @@ class ProjectController extends Controller
         $project->delete();
 
         return redirect()->route('admin.projects.index');
-
     }
 }
